@@ -13,7 +13,7 @@ void setup() {
 }
 
 void loop() {
-  int water_zone = map(waterReading(), 580, 890, 0, 19);
+  int water_zone = map(waterReading(), 580, 890, 19, 0);
   Serial.println(water_zone);
   display(water_zone);
 }
@@ -21,8 +21,8 @@ void loop() {
 void display(int water_zone){
   for(int row = 0; row < 4; row++){
     lcd.setCursor(0,row);
-    for(int i = 0; i < water_zone; i++)
-      lcd.write(255);
+    for(int i = 0; i < 20; i++)
+      lcd.write(i < water_zone ? 255 : ' ');
   }
 }
 
